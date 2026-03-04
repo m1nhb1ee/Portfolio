@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Code2 } from 'lucide-react';
 
 const menuItems = [
   { name: 'Home', href: '#home' },
@@ -44,7 +44,7 @@ export function Header() {
             className="flex items-center space-x-2 group"
           >
             <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
-              <span className="text-white font-bold text-lg md:text-xl">NTM</span>
+              <Code2 className="text-white" size={24} />
             </div>
           </button>
 
