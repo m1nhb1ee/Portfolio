@@ -1,17 +1,18 @@
 import { GraduationCap, MapPin, Calendar } from 'lucide-react';
+import hustLogo from '../../assets/logohust.png';
 
 const education = [
   {
     school: 'Hanoi University of Science and Technology',
     location: 'Hanoi, Vietnam',
-    degree: 'Bachelor of Computer Science',
+    degree: 'Bachelor of Informatics Comunication and Technology (ICT K68)',
     period: '2023 – 2028',
     current: true,
   },
   {
     school: 'Ha Long High School for Gifted Students',
     location: 'Quảng Ninh, Vietnam',
-    degree: 'Specialized in Informatics',
+    degree: 'Specialized in Informatics (Chuyên Tin K31)',
     period: '2020 – 2023',
     current: false,
   },
@@ -82,9 +83,15 @@ export function About() {
                         <div className={`p-2 rounded-lg ${
                           edu.current ? 'bg-blue-100' : 'bg-gray-200'
                         }`}>
-                          <GraduationCap className={`${
-                            edu.current ? 'text-blue-500' : 'text-gray-500'
-                          }`} size={20} />
+                          {edu.current ? (
+                            <img
+                              src={hustLogo}
+                              alt="HUST Logo"
+                              className="w-10 object-contain"
+                            />
+                          ) : (
+                            <GraduationCap className="text-gray-500" size={40} />
+                          )}
                         </div>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">

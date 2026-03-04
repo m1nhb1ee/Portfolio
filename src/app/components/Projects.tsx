@@ -1,26 +1,27 @@
 import { ExternalLink, Github } from 'lucide-react';
+import hustDermBg from '../../assets/hustdermBackground.png';
 
 const projects = [
   {
     title: 'HUSTDerm – Smart Skincare Assistant App',
     description: 'An intelligent mobile application that provides personalized skincare recommendations using AI and machine learning. Features include skin analysis, product recommendations, and consultation with dermatology experts.',
-    image: 'https://images.unsplash.com/photo-1646737554389-49329965ef01?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXZlbG9wbWVudCUyMHNtYXJ0cGhvbmV8ZW58MXx8fHwxNzcyNjMyMzEyfDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: hustDermBg,
     technologies: ['Java', 'Python', 'MongoDB', 'LLM'],
-    github: '#',
+    github: 'https://github.com/m1nhb1ee/navHustDerm',
   },
   {
     title: 'Traffic Sign Recognition System',
     description: 'A computer vision system that accurately detects and classifies traffic signs in real-time using deep learning. Implements VGG16 architecture for high accuracy recognition.',
     image: 'https://images.unsplash.com/photo-1655272427565-c64fd73298df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMHZpc2lvbiUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzcyNjM1NDc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
     technologies: ['TensorFlow', 'OpenCV', 'VGG16', 'Python'],
-    github: '#',
+    github: 'https://github.com/m1nhb1ee/traffic-sign-recognition',
   },
   {
     title: 'Captcha Resolution & Mobile Network Tracking',
     description: 'An automated system for captcha solving and mobile network tracking using OCR technology and Selenium for web automation. Improves efficiency in data collection processes.',
     image: 'https://images.unsplash.com/photo-1625459201773-9b2386f53ca2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwY29kZSUyMHByb2dyYW1taW5nfGVufDF8fHx8MTc3MjYzNTQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080',
     technologies: ['Python', 'OCR', 'Selenium'],
-    github: '#',
+    github: 'https://github.com/m1nhb1ee/worker',
   },
 ];
 

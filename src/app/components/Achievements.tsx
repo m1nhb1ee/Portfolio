@@ -2,11 +2,25 @@ import { Trophy, Award, Star, Globe } from 'lucide-react';
 
 const achievements = [
   {
+    year: '2025',
+    title: 'CodeFest FPT University',
+    category: 'Rank 3',
+    icon: Trophy,
+    color: 'orange',
+  },
+  {
     year: '2023',
     title: 'IELTS 6.0',
     category: 'Language Certification',
     icon: Globe,
     color: 'purple',
+  },
+  {
+    year: '2023',
+    title: '2nd Young Informatics Contest',
+    category: '2nd Prize',
+    icon: Award,
+    color: 'orange',
   },
   {
     year: '2022',
@@ -23,16 +37,23 @@ const achievements = [
     color: 'yellow',
   },
   {
-    year: '2021-2022',
-    title: 'Young Informatics Contest',
-    category: '2nd & 3rd Prize',
+    year: '2022',
+    title: '3rd Young Informatics Contest',
+    category: '3rd Prize',
     icon: Award,
     color: 'orange',
   },
   {
-    year: '2021-2023',
-    title: 'Provincial Informatics Competition',
-    category: '2nd, 3rd & Consolation Prize',
+    year: '2022',
+    title: '2nd Provincial Informatics Competition',
+    category: '2nd Prize',
+    icon: Trophy,
+    color: 'blue',
+  },
+  {
+    year: '2021',
+    title: '3rd Provincial Informatics Competition',
+    category: '3rd Prize',
     icon: Trophy,
     color: 'blue',
   },
@@ -42,6 +63,27 @@ const achievements = [
     category: 'Ha Long High School for Gifted Students',
     icon: Trophy,
     color: 'gold',
+  },
+  {
+    year: '2018',
+    title: '2nd Provincial Science and Technology',
+    category: '2nd Prize',
+    icon: Award,
+    color: 'blue',
+  },
+  {
+    year: '2018',
+    title: '2nd Young Informatics Contest',
+    category: 'Software Innovation — 2nd Prize',
+    icon: Award,
+    color: 'orange',
+  },
+  {
+    year: '2017',
+    title: 'Youth Innovation Award',
+    category: 'Innovation Recognition',
+    icon: Star,
+    color: 'purple',
   },
 ];
 
@@ -140,11 +182,11 @@ export function Achievements() {
         {/* Stats Summary */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">6+</div>
+            <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">12+</div>
             <div className="text-gray-600">Awards</div>
           </div>
           <div className="text-center">
-            <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">3+</div>
+            <div className="text-3xl md:text-4xl font-bold text-blue-500 mb-2">5+</div>
             <div className="text-gray-600">Competitions</div>
           </div>
           <div className="text-center">

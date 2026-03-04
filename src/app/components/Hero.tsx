@@ -1,5 +1,5 @@
 import { Download, ChevronDown } from 'lucide-react';
-import profileImg from 'figma:asset/23cd5281e8ec5a5a9a556ff998d569db29b99635.png';
+import profileImg from 'C:/Job/Personal Project/Portfolio/src/assets/23cd5281e8ec5a5a9a556ff998d569db29b99635.jpg';
 
 export function Hero() {
   const scrollToSection = (href: string) => {

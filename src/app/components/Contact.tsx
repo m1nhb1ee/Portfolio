@@ -5,14 +5,14 @@ export function Contact() {
     {
       icon: Mail,
       label: 'Email',
-      value: 'minh.nt@hust.edu.vn',
-      href: 'mailto:minh.nt@hust.edu.vn',
+      value: 'minhngtr.b1e@gmail.com',
+      href: 'mailto:minhngtr.b1e@gmail.com',
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: '+84 123 456 789',
-      href: 'tel:+84123456789',
+      value: '+84 969 062 173',
+      href: 'tel:+84969062173',
     },
     {
       icon: MapPin,
