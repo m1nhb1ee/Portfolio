@@ -1,4 +1,4 @@
-import { Mail, Phone, Linkedin, Github, MapPin } from 'lucide-react';
+import { Mail, Phone, Linkedin, Github, MapPin, Facebook } from 'lucide-react';
 
 export function Contact() {
   const contactInfo = [
@@ -33,7 +33,13 @@ export function Contact() {
       icon: Linkedin,
       label: 'LinkedIn',
       href: 'https://www.linkedin.com/in/minhb1e/',
-      color: 'hover:bg-blue-600 hover:text-white',
+      color: 'hover:bg-blue-500 hover:text-white',
+    },
+        {
+      icon: Facebook,
+      label: 'Facebook',
+      href: 'https://www.facebook.com/nguyen.minh.429093',
+      color: 'hover:bg-blue-900 hover:text-white',
     },
   ];
 
