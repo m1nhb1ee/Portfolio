@@ -4,7 +4,7 @@ const skillCategories = [
   {
     title: 'Languages',
     icon: Code2,
-    skills: ['Java', 'Python', 'C/C++', 'C#'],
+    skills: ['Java', 'Python', 'C/C++', 'C#', 'JavaScript', 'HTML'],
     color: 'blue',
   },
   {
