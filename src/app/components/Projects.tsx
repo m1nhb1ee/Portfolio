@@ -14,7 +14,7 @@ const projects = [
     description: 'A computer vision system that accurately detects and classifies traffic signs in real-time using deep learning. Implements VGG16 architecture for high accuracy recognition.',
     image: 'https://images.unsplash.com/photo-1655272427565-c64fd73298df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMHZpc2lvbiUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzcyNjM1NDc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
     technologies: ['TensorFlow', 'OpenCV', 'VGG16', 'Python'],
-    github: 'https://github.com/m1nhb1ee/traffic-sign-recognition',
+    github: 'https://www.kaggle.com/code/duckool/final-hanh',
   },
   {
     title: 'Captcha Resolution & Mobile Network Tracking',
@@ -101,7 +101,7 @@ export function Projects() {
         {/* View More */}
         <div className="text-center mt-12">
           <a
-            href="https://github.com"
+            href="https://github.com/m1nhb1ee"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition-all"
