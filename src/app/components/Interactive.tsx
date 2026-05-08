@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import cursorAsset from '../../assets/select-cursor.png';
+import { Moon, Sun } from 'lucide-react';
 
 export function ScrollProgress() {
   const [width, setWidth] = useState(0);
@@ -48,13 +48,13 @@ export function ThemeToggle() {
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
       aria-pressed={dark}
     >
-      {dark ? 'L' : 'D'}
+      {dark ? <Sun aria-hidden="true" /> : <Moon aria-hidden="true" />}
     </button>
   );
 }
 
 export function CustomCursor() {
-  const arrowRef = useRef<HTMLDivElement>(null);
+  const dotRef = useRef<HTMLDivElement>(null);
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -64,14 +64,14 @@ export function CustomCursor() {
     root.classList.add('cursor-active');
 
     const move = (event: MouseEvent) => {
-      arrowRef.current?.style.setProperty('transform', `translate(${event.clientX}px, ${event.clientY}px)`);
+      dotRef.current?.style.setProperty('transform', `translate(${event.clientX}px, ${event.clientY}px)`);
       ringRef.current?.style.setProperty('transform', `translate(${event.clientX}px, ${event.clientY}px)`);
 
       const target = event.target as HTMLElement | null;
       const interactive = target?.closest('a, button, [role="button"], .magnetic');
       const text = target?.closest('input, textarea, [contenteditable="true"]');
-      arrowRef.current?.classList.toggle('cursor-hover', Boolean(interactive));
-      arrowRef.current?.classList.toggle('cursor-text', Boolean(text));
+      dotRef.current?.classList.toggle('cursor-hover', Boolean(interactive));
+      dotRef.current?.classList.toggle('cursor-text', Boolean(text));
       ringRef.current?.classList.toggle('cursor-hover', Boolean(interactive));
       ringRef.current?.classList.toggle('cursor-text', Boolean(text));
     };
@@ -85,9 +85,7 @@ export function CustomCursor() {
 
   return (
     <>
-      <div ref={arrowRef} className="cursor-arrow" aria-hidden="true">
-        <img src={cursorAsset} alt="" />
-      </div>
+      <div ref={dotRef} className="cursor-dot" aria-hidden="true" />
       <div ref={ringRef} className="cursor-ring" />
     </>
   );

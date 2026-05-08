@@ -63,9 +63,25 @@ a { color: inherit; }
   background: none;
   border: none;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.site-nav .wordmark span { color: var(--accent); }
+.site-nav .wordmark img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  /* width: 32px;
+  height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  object-fit: cover;
+  object-position: 50% 34%; */
+}
+
+.site-nav .wordmark span { color: inherit; }
 
 .site-nav ul {
   list-style: none;
@@ -1246,6 +1262,12 @@ body::before {
   font-size: 11px;
 }
 
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.8;
+}
+
 .hero {
   max-width: none;
   min-height: 100vh;
@@ -2073,7 +2095,7 @@ button,
   transform: translateX(115%);
 }
 
-.cursor-arrow,
+.cursor-dot,
 .cursor-ring {
   position: fixed;
   top: 0;
@@ -2084,27 +2106,14 @@ button,
   will-change: transform;
 }
 
-.cursor-arrow {
-  width: 16px;
-  height: 16px;
-  margin: -1px 0 0 -1px;
-  transition: transform 0.04s linear, opacity 0.2s ease, filter 0.2s ease;
-}
-
-.cursor-arrow img {
-  display: block;
-  width: 16px;
-  height: 16px;
-  image-rendering: crisp-edges;
-  filter: drop-shadow(0 2px 8px color-mix(in oklch, var(--fg) 26%, transparent));
-}
-
-.cursor-arrow.cursor-hover img {
-  filter: drop-shadow(0 0 12px var(--accent));
-}
-
-.cursor-arrow.cursor-text {
-  opacity: 0.25;
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px color-mix(in oklch, var(--accent) 52%, transparent);
+  transition: transform 0.04s linear, opacity 0.2s ease;
 }
 
 .cursor-ring {
@@ -2118,9 +2127,13 @@ button,
   transition: transform 0.16s ease-out, width 0.25s ease, height 0.25s ease, margin 0.25s ease, background 0.25s ease, opacity 0.2s ease;
 }
 
-.cursor-active .cursor-arrow,
+.cursor-active .cursor-dot,
 .cursor-active .cursor-ring {
   opacity: 1;
+}
+
+.cursor-dot.cursor-text {
+  opacity: 0.35;
 }
 
 .cursor-ring.cursor-hover {
@@ -2226,7 +2239,7 @@ button,
     right: -12rem;
   }
 
-  .cursor-arrow,
+  .cursor-dot,
   .cursor-ring {
     display: none !important;
   }

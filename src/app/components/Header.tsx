@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from './Interactive';
+import logo from '../../assets/logo.png';
 
 const menuItems = [
   { name: 'Manifesto', href: '#about' },
@@ -27,7 +28,8 @@ export function Header() {
   return (
     <nav className={`site-nav ${open ? 'open' : ''}`}>
       <button className="wordmark" onClick={() => go('#home')}>
-        Ø Minh<span>.</span>AI
+        <img src={logo} alt="" />
+        <span>M1NH.B1E</span>
       </button>
       <ul>
         {menuItems.map(item => (
