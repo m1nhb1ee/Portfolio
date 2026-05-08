@@ -179,3 +179,42 @@
     line-height: 1.5;
   }
 }
+
+/* ─── Design system overrides — warm-soft palette ─── */
+:root {
+  --bg:      oklch(97% 0.018 70);
+  --surface: oklch(99% 0.008 70);
+  --fg:      oklch(22% 0.02 50);
+  --muted:   oklch(50% 0.018 50);
+  --border:  oklch(90% 0.014 70);
+  --accent:  oklch(64% 0.13 28);
+
+  --ds-primary: #5D4432;
+
+  --font-display: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
+
+  --radii: 14px;
+  --radii-sm: 8px;
+
+  /* Override shadcn defaults that would conflict */
+  --background: oklch(97% 0.018 70);
+  --foreground: oklch(22% 0.02 50);
+  --muted-foreground: oklch(50% 0.018 50);
+}
+
+html.dark {
+  --bg:      oklch(16% 0.012 50);
+  --surface: oklch(20% 0.014 50);
+  --fg:      oklch(94% 0.012 70);
+  --muted:   oklch(62% 0.018 70);
+  --border:  oklch(28% 0.014 50);
+  --accent:  oklch(72% 0.14 30);
+
+  --ds-primary: #C68A6A;
+
+  --background: oklch(16% 0.012 50);
+  --foreground: oklch(94% 0.012 70);
+  --muted-foreground: oklch(62% 0.018 70);
+}

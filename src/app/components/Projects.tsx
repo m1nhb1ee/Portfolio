@@ -1,115 +1,108 @@
-import { ExternalLink, Github } from 'lucide-react';
-import hustDermBg from '../../assets/hustdermBackground.png';
+type Project = {
+  tag: string;
+  title: string;
+  description: string;
+  stack: string[];
+  href: string;
+  date: string;
+  featured?: boolean;
+};
 
-const projects = [
+const projects: Project[] = [
   {
-    title: 'HUSTDerm – Smart Skincare Assistant App',
-    description: 'An intelligent mobile application that provides personalized skincare recommendations using AI and machine learning. Features include skin analysis, product recommendations, and consultation with dermatology experts.',
-    image: hustDermBg,
-    technologies: ['Java', 'Python', 'MongoDB', 'LLM'],
-    github: 'https://github.com/m1nhb1ee/navHustDerm',
+    tag: 'Featured · Medical AI',
+    title: 'SARa — Medical Radiology Training Platform',
+    description:
+      'AI-powered web platform for medical students and resident doctors to practice radiological image diagnosis. Built a multi-modal AI agent on MedGemma 4B, with Django, Supabase, JWT middleware, storage integration, and domain-oriented backend structure.',
+    stack: ['Django', 'DRF', 'Supabase', 'MedGemma 4B', 'AWS'],
+    href: 'https://github.com/m1nhb1ee/SARa',
+    date: '04/2026 — present',
+    featured: true,
   },
   {
+    tag: 'Computer Vision · Solo',
+    title: 'SnakeNet — Snake Detection in Natural Environments',
+    description:
+      'Custom detector from scratch: backbone, FPN, SnakeAwareModule, CBAM attention, ASPP, multi-scale heads, CIoU loss, Focal Loss, and FP16 training.',
+    stack: ['PyTorch', 'CBAM', 'ASPP', 'FP16', 'Kaggle'],
+    href: 'https://github.com/m1nhb1ee/snakenet',
+    date: '01/2026 — 03/2026',
+  },
+  {
+    tag: 'NLP · Solo',
+    title: 'DeDe — Depression Detection via Social Media',
+    description:
+      'Vietnamese depression-severity detection system using profile-level social data and Qwen2.5-4B fine-tuning with LoRA.',
+    stack: ['PyTorch', 'Qwen2.5-4B', 'LoRA', 'HuggingFace', 'Vietnamese NLP'],
+    href: 'https://github.com/m1nhb1ee/dede',
+    date: '02/2026 — present',
+  },
+  {
+    tag: 'Data · Solo',
+    title: 'Bunik — University Admissions Aggregator & AI Advisor',
+    description:
+      'Automated admissions-data pipeline and AI advising layer for GPA-equivalent scores, major matching, and admission probability estimates.',
+    stack: ['Python', 'PostgreSQL', 'Django', 'AI scoring'],
+    href: 'https://github.com/m1nhb1ee/bunik',
+    date: '04/2026 — present',
+  },
+  {
+    tag: 'Full-stack',
+    title: 'HustDerm — Smart Skincare Assistant',
+    description:
+      'Full-stack skincare assistant with real-time product crawling, MongoDB storage, and LLM-powered recommendations over 100+ products.',
+    stack: ['Java', 'JavaFX', 'Python', 'MongoDB', 'LLM'],
+    href: 'https://github.com/m1nhb1ee/navHustDerm',
+    date: 'Feb — May 2025',
+  },
+  {
+    tag: 'Computer Vision',
     title: 'Traffic Sign Recognition System',
-    description: 'A computer vision system that accurately detects and classifies traffic signs in real-time using deep learning. Implements VGG16 architecture for high accuracy recognition.',
-    image: 'https://images.unsplash.com/photo-1655272427565-c64fd73298df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb21wdXRlciUyMHZpc2lvbiUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzcyNjM1NDc4fDA&ixlib=rb-4.1.0&q=80&w=1080',
-    technologies: ['TensorFlow', 'OpenCV', 'VGG16', 'Python'],
-    github: 'https://www.kaggle.com/code/duckool/final-hanh',
-  },
-  {
-    title: 'Captcha Resolution & Mobile Network Tracking',
-    description: 'An automated system for captcha solving and mobile network tracking using OCR technology and Selenium for web automation. Improves efficiency in data collection processes.',
-    image: 'https://images.unsplash.com/photo-1625459201773-9b2386f53ca2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzb2Z0d2FyZSUyMGRldmVsb3BtZW50JTIwY29kZSUyMHByb2dyYW1taW5nfGVufDF8fHx8MTc3MjYzNTQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080',
-    technologies: ['Python', 'OCR', 'Selenium'],
-    github: 'https://github.com/m1nhb1ee/worker',
+    description:
+      'Fine-tuned VGG16 for traffic sign classification with OpenCV preprocessing and TensorFlow training.',
+    stack: ['Python', 'TensorFlow', 'VGG16', 'OpenCV'],
+    href: 'https://www.kaggle.com/code/duckool/final-hanh',
+    date: 'Mar — May 2025',
   },
 ];
 
 export function Projects() {
   return (
-    <section id="projects" className="py-16 md:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-4">
-            Featured <span className="text-blue-500">Projects</span>
-          </h2>
-          <div className="w-20 h-1 bg-blue-500 mx-auto mb-6"></div>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Here are some of my recent projects that showcase my skills and passion for development
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {projects.map((project, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group"
-            >
-              {/* Project Image */}
-              <div className="relative h-48 md:h-56 overflow-hidden bg-gray-100">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-              </div>
-
-              {/* Project Content */}
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
-                  {project.title}
-                </h3>
-                
-                <p className="text-gray-600 mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Actions */}
-                <div className="flex gap-3">
-                  <a
-                    href={project.github}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
-                  >
-                    <Github size={18} />
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={project.github}
-                    className="flex items-center justify-center px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:border-blue-500 hover:text-blue-500 transition-colors"
-                  >
-                    <ExternalLink size={18} />
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* View More */}
-        <div className="text-center mt-12">
-          <a
-            href="https://github.com/m1nhb1ee"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-500 hover:text-white transition-all"
+    <section id="projects" className="section-shell">
+      <div className="section-label">IV.Selected Work · 2026 Catalog · 005 / 008</div>
+      <div className="section-title">Projects that turn models into memorable shipped systems.</div>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <article
+            key={project.title}
+            className={`project-card ${project.featured ? 'full-width' : ''}`}
           >
-            <Github size={20} />
-            View More on GitHub
-          </a>
-        </div>
+            <div>
+              <div className="project-tag">Nº {String(index + 1).padStart(2, '0')} · {project.tag} · {project.date}</div>
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="project-stack">
+                {project.stack.map(item => (
+                  <span key={item}>{item}</span>
+                ))}
+              </div>
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link magnetic"
+              >
+                View source →
+              </a>
+            </div>
+            {project.featured && (
+              <div className="project-preview">
+                <span>FIG. 02</span>
+                <strong>MedGemma / Radiology / Backend</strong>
+              </div>
+            )}
+          </article>
+        ))}
       </div>
     </section>
   );

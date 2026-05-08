@@ -1,79 +1,122 @@
-import { Download, ChevronDown } from 'lucide-react';
-import profileImg from '../../assets/23cd5281e8ec5a5a9a556ff998d569db29b99635.jpg';
+import { useEffect, useRef, useState } from 'react';
+
+const phrases = [
+  'AI engineering student at HUST.',
+  'Backend · DL/CV · Cloud infrastructure.',
+  'Building end-to-end production systems.',
+  'From research to shipping.',
+];
 
 export function Hero() {
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const [text, setText] = useState('');
+  const phraseIdx = useRef(0);
+  const charIdx = useRef(0);
+  const deleting = useRef(false);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout>;
+    const tick = () => {
+      const current = phrases[phraseIdx.current];
+      if (deleting.current) {
+        charIdx.current -= 1;
+        setText(current.substring(0, Math.max(charIdx.current, 0)));
+      } else {
+        charIdx.current += 1;
+        setText(current.substring(0, charIdx.current));
+      }
+
+      let delay = deleting.current ? 30 : 60;
+      if (!deleting.current && charIdx.current > current.length) {
+        delay = 1800;
+        deleting.current = true;
+      } else if (deleting.current && charIdx.current < 0) {
+        deleting.current = false;
+        phraseIdx.current = (phraseIdx.current + 1) % phrases.length;
+        delay = 400;
+      }
+      timer = setTimeout(tick, delay);
+    };
+    timer = setTimeout(tick, 400);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const scrollToAbout = () => {
+    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center pt-16 md:pt-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Text Content */}
-          <div className="text-center lg:text-left order-2 lg:order-1">
-            <div className="inline-block px-4 py-2 bg-blue-50 text-blue-600 rounded-full mb-4 md:mb-6">
-              <span className="text-sm md:text-base">Welcome to my portfolio</span>
-            </div>
-            
-            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl mb-4 md:mb-6">
-              <span className="block text-gray-900">Hi, I'm</span>
-              <span className="block text-blue-500 font-bold">Nguyễn Trọng Minh</span>
-            </h1>
-            
-            <p className="text-xl md:text-2xl lg:text-3xl text-gray-700 mb-3 md:mb-4">
-              Aspiring Software Engineer
-            </p>
-            <p className="text-lg md:text-xl text-gray-600 mb-6 md:mb-8">
-              Backend & Machine Learning Enthusiast
-            </p>
-            
-            <p className="text-base md:text-lg text-gray-600 mb-8 md:mb-10 max-w-xl mx-auto lg:mx-0">
-              Passionate about building impactful applications with real-world value
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() => scrollToSection('#projects')}
-                className="px-6 md:px-8 py-3 md:py-4 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-all hover:shadow-lg transform hover:-translate-y-0.5"
-              >
-                View My Projects
-              </button>
-              <button className="px-6 md:px-8 py-3 md:py-4 border-2 border-blue-500 text-blue-500 rounded-lg hover:bg-blue-50 transition-all flex items-center justify-center gap-2">
-                <Download size={20} />
-                Download CV
-              </button>
-            </div>
-          </div>
+    <header id="home" className="hero">
+      <div className="hero-issue">
+        <span>MT / 2026 · Vol. 01 / Issue Nº 08</span>
+        <span>Filed under AI · Backend · Vision</span>
+        <span>Hanoi / Vietnam</span>
+      </div>
 
-          {/* Profile Image */}
-          <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-blue-500 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-8 border-white shadow-2xl">
-                <img
-                  src={profileImg}
-                  alt="Nguyễn Trọng Minh"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-          </div>
+      <div className="hero-main">
+        <div className="hero-eyebrow">Open portfolio studio · Nº 01</div>
+        <div className="hero-name" aria-label="Nguyen Trong Minh">
+          <span>Nguyen</span>
+          <span>Trong Minh</span>
         </div>
-
-        {/* Scroll Indicator */}
-        <div className="flex justify-center mt-12 md:mt-16 lg:mt-20">
-          <button
-            onClick={() => scrollToSection('#about')}
-            className="text-gray-400 hover:text-blue-500 transition-colors animate-bounce"
-          >
-            <ChevronDown size={32} />
-          </button>
+        <h1>Designing useful AI with code, systems, and taste.</h1>
+        <div className="hero-tagline">
+          <span>{text}</span>
+          <span className="cursor" />
+        </div>
+        <div className="hero-actions">
+          <a href="#projects" className="hero-cta magnetic">View work</a>
+          <a href="#contact" className="hero-cta hero-cta-secondary magnetic">Contact</a>
         </div>
       </div>
-    </section>
+
+      <aside className="hero-side">
+        <div className="hero-side-label">Nguyen Trong Minh · AI Engineer</div>
+        <p>
+          AI engineering student at Hanoi University of Science and Technology
+          with hands-on experience in backend development, deep learning, and
+          cloud infrastructure. I build end-to-end production systems —
+          independently, end-to-end.
+        </p>
+        <div className="hero-metrics">
+          <div><strong>10</strong><span>awards</span></div>
+          <div><strong>06</strong><span>projects</span></div>
+          <div><strong>04</strong><span>systems</span></div>
+        </div>
+      </aside>
+
+      <div className="hero-plate">
+        <div className="plate-caption">FIG. 01 / MT-26 Plate Nº 08</div>
+        <div className="plate-grid">
+          <span>Detect</span>
+          <span>Design</span>
+          <span>Train</span>
+          <span>Ship</span>
+        </div>
+        <div className="plate-mark">Ø</div>
+      </div>
+
+      <div className="field-ticker" aria-hidden="true">
+        <div className="field-ticker-track">
+          <span>
+            Hanoi · Berlin · Tokyo · Singapore · San Francisco · HUST · AWS · PyTorch · Supabase · Django · Hanoi · Berlin · Tokyo · Singapore · San Francisco ·
+          </span>
+          <span>
+            Hanoi · Berlin · Tokyo · Singapore · San Francisco · HUST · AWS · PyTorch · Supabase · Django · Hanoi · Berlin · Tokyo · Singapore · San Francisco ·
+          </span>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className="scroll-hint"
+        onClick={scrollToAbout}
+        aria-label="Scroll to about section"
+      >
+        <span>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+    </header>
   );
 }
