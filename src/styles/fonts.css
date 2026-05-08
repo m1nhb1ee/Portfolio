@@ -609,6 +609,7 @@ a { color: inherit; }
 }
 
 .terminal {
+  width: min(100%, 920px);
   background: var(--fg);
   color: var(--surface);
   border-radius: var(--radii);
