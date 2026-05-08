@@ -74,7 +74,7 @@ export function Hero() {
         <p>
           AI engineering student at Hanoi University of Science and Technology
           with hands-on experience in backend development, deep learning, and
-          cloud infrastructure. I build end-to-end production systems —
+          cloud infrastructure. I build end-to-end production systems -
           independently, end-to-end.
         </p>
         <div className="hero-metrics">

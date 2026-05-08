@@ -1,3 +1,8 @@
+import saraImg from '../../assets/sara.png';
+import snakenetImg from '../../assets/snakenet/snakenet.jpg';
+import snakenetImg2 from '../../assets/snakenet/snakenet2.jpg';
+import snakenetImg3 from '../../assets/snakenet/snakenet3.jpg';
+
 type Project = {
   tag: string;
   title: string;
@@ -6,6 +11,8 @@ type Project = {
   href: string;
   date: string;
   featured?: boolean;
+  image?: string;
+  images?: string[];
 };
 
 const projects: Project[] = [
@@ -18,6 +25,7 @@ const projects: Project[] = [
     href: 'https://github.com/m1nhb1ee/SARa',
     date: '04/2026 — present',
     featured: true,
+    image: saraImg,
   },
   {
     tag: 'Computer Vision · Solo',
@@ -27,6 +35,7 @@ const projects: Project[] = [
     stack: ['PyTorch', 'CBAM', 'ASPP', 'FP16', 'Kaggle'],
     href: 'https://github.com/m1nhb1ee/snakenet',
     date: '01/2026 — 03/2026',
+    images: [snakenetImg, snakenetImg2, snakenetImg3],
   },
   {
     tag: 'NLP · Solo',
@@ -75,11 +84,25 @@ export function Projects() {
         {projects.map((project, index) => (
           <article
             key={project.title}
-            className={`project-card ${project.featured ? 'full-width' : ''}`}
+            className={`project-card ${project.featured ? 'full-width' : ''} ${(project.image || project.images) && !project.featured ? 'has-thumb' : ''}`}
           >
-            <div>
+            <div className="project-body">
               <div className="project-tag">Nº {String(index + 1).padStart(2, '0')} · {project.tag} · {project.date}</div>
               <h3>{project.title}</h3>
+              {!project.featured && project.images && project.images.length > 0 && (
+                <div className="project-gallery">
+                  {project.images.map((src, i) => (
+                    <div key={i} className="project-gallery-item">
+                      <img src={src} alt={`${project.title} ${i + 1}`} loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              )}
+              {!project.featured && !project.images && project.image && (
+                <div className="project-thumb">
+                  <img src={project.image} alt={project.title} loading="lazy" />
+                </div>
+              )}
               <p>{project.description}</p>
               <div className="project-stack">
                 {project.stack.map(item => (
@@ -95,10 +118,13 @@ export function Projects() {
                 View source →
               </a>
             </div>
-            {project.featured && (
-              <div className="project-preview">
-                <span>FIG. 02</span>
-                <strong>MedGemma / Radiology / Backend</strong>
+            {project.featured && project.image && (
+              <div className="project-preview project-preview-image">
+                <img src={project.image} alt={project.title} loading="lazy" />
+                <div className="project-preview-meta">
+                  <span>FIG. 02</span>
+                  <strong>MedGemma / Radiology / Backend</strong>
+                </div>
               </div>
             )}
           </article>

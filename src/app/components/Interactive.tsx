@@ -342,8 +342,8 @@ type CounterItem = {
 };
 
 const counters: CounterItem[] = [
-  { value: 10, label: 'awards' },
-  { value: 6, suffix: '+', label: 'projects shipped' },
+  { value: 12, suffix: '+', label: 'awards' },
+  { value: 9, suffix: '+', label: 'projects shipped' },
   { value: 4, suffix: ' mo', label: 'industry internship' },
   { value: 100, suffix: '+', label: 'products crawled' },
 ];

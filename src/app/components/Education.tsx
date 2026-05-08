@@ -1,13 +1,16 @@
+import hustLogo from '../../assets/logohust.png';
+import halongLogo from '../../assets/logo_chuyenhalong.jpg';
+
 const education = [
   {
-    initial: 'B',
+    logo: hustLogo,
     degree: 'B.Sc. Information Technology',
     school: 'Hanoi University of Science and Technology (HUST)',
     period: '2023 — 2027',
     note: 'Focused coursework: Data Structures, Web Development, Software Engineering.',
   },
   {
-    initial: 'H',
+    logo: halongLogo,
     degree: 'Specialised in Informatics Technology',
     school: 'Ha Long High School for Gifted Students',
     period: '2020 — 2023',
@@ -23,7 +26,9 @@ export function Education() {
       <div className="education-list">
         {education.map((e, i) => (
           <div key={i} className="edu-card">
-            <div className="edu-icon">{e.initial}</div>
+            <div className="edu-icon edu-icon-logo">
+              <img src={e.logo} alt={`${e.school} logo`} loading="lazy" />
+            </div>
             <div>
               <div className="edu-degree">{e.degree}</div>
               <div className="edu-school">{e.school}</div>
