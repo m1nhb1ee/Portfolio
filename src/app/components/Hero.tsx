@@ -47,9 +47,9 @@ export function Hero() {
   return (
     <header id="home" className="hero">
       <div className="hero-issue">
-        <span>MT / 2026 · Vol. 01 / Issue Nº 08</span>
-        <span>Filed under AI · Backend · Vision</span>
-        <span>Hanoi / Vietnam</span>
+        <span>Vol. 01 · Issue Nº 08 · May 2026</span>
+        <span>21.0285° N · 105.8542° E · Hanoi / VN</span>
+        <span>Build a3f2c1 · Filed under AI · Backend · Vision</span>
       </div>
 
       <div className="hero-main">
@@ -58,7 +58,7 @@ export function Hero() {
           <span>Nguyen</span>
           <span>Trong Minh</span>
         </div>
-        <h1>Designing useful AI with code, systems, and taste.</h1>
+        <h1>Designing <em>useful AI</em> with code, systems, and <em>taste</em><span className="dot">.</span></h1>
         <div className="hero-tagline">
           <span>{text}</span>
           <span className="cursor" />
@@ -85,12 +85,12 @@ export function Hero() {
       </aside>
 
       <div className="hero-plate">
-        <div className="plate-caption">FIG. 01 / MT-26 Plate Nº 08</div>
+        <div className="plate-caption">FIG. 01 · MT-26 · PLATE Nº 08 · METHOD</div>
         <div className="plate-grid">
-          <span>Detect</span>
+          <span>Define</span>
           <span>Design</span>
-          <span>Train</span>
-          <span>Ship</span>
+          <span>Develop</span>
+          <span>Deliver</span>
         </div>
         <div className="plate-mark">Ø</div>
       </div>

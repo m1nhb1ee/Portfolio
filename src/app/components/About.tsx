@@ -3,7 +3,7 @@ export function About() {
     <section id="about" className="section-shell manifesto-section">
       <div className="section-label">I.Manifesto / Portfolio · 002 / 008</div>
       <div className="section-title">
-        I treat AI as production craft, not a black box.
+        I treat AI as <em>production craft</em>, not a <em>black box</em><span className="dot">.</span>
       </div>
       <div className="about-grid">
         <div className="about-text">

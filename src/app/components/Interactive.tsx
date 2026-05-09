@@ -276,8 +276,8 @@ export function NeuralNetworkGame() {
 
   return (
     <section id="neural-game" className="neural-shell">
-      <div className="section-label">07 — Neural game</div>
-      <div className="section-title">Train a tiny neural network</div>
+      <div className="section-label">07 - Neural game</div>
+      <div className="section-title">Train a <em>tiny</em> neural network<span className="dot">.</span></div>
       <div className="neural-canvas">
         <svg className="neural-svg" viewBox="0 0 520 320" role="img" aria-label="Interactive neural network">
           {connections.map(connection => (

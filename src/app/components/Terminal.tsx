@@ -8,11 +8,11 @@ const responses: Record<string, string> = {
   projects:
     '🚀 SARa (medical radiology + MedGemma), SnakeNet (custom detector), DeDe (Vietnamese NLP, Qwen2.5-4B + LoRA), Bunik (admissions advisor), HustDerm, Traffic Sign Recognition.',
   experience:
-    '💼 Frontend & AI Engineer Intern at AVT Software (4 months, 2025) — React.js + LLM API integration in production.',
+    '💼 Frontend & AI Engineer Intern at AVT Software (4 months, 2025) - React.js + LLM API integration in production.',
   education:
-    '🎓 B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted — Informatics, Top-2 entrance.',
+    '🎓 B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted - Informatics, Top-2 entrance.',
   coffee:
-    '☕ Vietnamese coffee — strong, sweet, phin-filtered. Same patience I apply to debugging.',
+    '☕ Vietnamese coffee - strong, sweet, phin-filtered. Same patience I apply to debugging.',
   philosophy:
     '💡 "The best model is the one that ships." Reliability over novelty. Infrastructure over algorithms. Clarity over cleverness.',
   help:
@@ -21,7 +21,7 @@ const responses: Record<string, string> = {
 
 const fallback = [
   "Hmm, that's not a command I know yet. Try 'help' for the full list.",
-  "Interesting question! I'm a simple terminal though — try 'help' to see what I know.",
+  "Interesting question! I'm a simple terminal though - try 'help' to see what I know.",
   "I wish I could answer that. My knowledge is limited to the commands listed under 'help'.",
 ];
 
@@ -41,9 +41,9 @@ export function Terminal() {
 
   return (
     <div className="terminal-section" id="terminal">
-      <div className="section-label">07 — Try it</div>
+      <div className="section-label">07 - Try it</div>
       <div className="section-title" style={{ marginBottom: 32 }}>
-        Ask Minh's terminal
+        Ask <em>Minh’s</em> terminal<span className="dot">.</span>
       </div>
       <div className="terminal">
         <div className="terminal-bar">

@@ -180,7 +180,7 @@
   }
 }
 
-/* ─── Design system overrides — warm-soft palette ─── */
+/* ─── Design system overrides - warm-soft palette ─── */
 :root {
   --bg:      oklch(97% 0.018 70);
   --surface: oklch(99% 0.008 70);
@@ -191,7 +191,7 @@
 
   --ds-primary: #5D4432;
 
-  --font-display: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+  --font-display: 'Playfair Display', 'Times New Roman', Georgia, serif;
   --font-body:    'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, Menlo, monospace;
 

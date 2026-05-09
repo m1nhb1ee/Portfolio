@@ -9,7 +9,7 @@ export function Contact() {
     <section id="contact" className="contact-section">
       <div className="section-label">VIII.Contact / Conversation · 008 / 008</div>
       <div className="section-title" style={{ marginInline: 'auto' }}>
-        Let’s build something useful and visually intentional.
+        Let’s build something <em>useful</em> and <em>visually intentional</em> together <span className="dot">.</span>
       </div>
       <div className="contact-links">
         {channels.map(channel => (
