@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Moon, Sun } from 'lucide-react';
 
+import { portfolioStats } from '../content/voice';
+
 export function ScrollProgress() {
   const [width, setWidth] = useState(0);
 
@@ -58,6 +60,7 @@ export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
     const root = document.body;
@@ -93,8 +96,6 @@ export function CustomCursor() {
 
 export function ScrollReveal() {
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
     const revealTargets = Array.from(
       document.querySelectorAll<HTMLElement>([
         '.section-shell',
@@ -112,10 +113,18 @@ export function ScrollReveal() {
       ].join(',')),
     );
 
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     revealTargets.forEach((target, index) => {
       target.dataset.reveal = '';
+      if (reduced) {
+        target.classList.add('is-visible');
+        return;
+      }
       target.style.setProperty('--reveal-delay', `${Math.min(index % 8, 7) * 55}ms`);
     });
+
+    if (reduced) return;
 
     const observer = new IntersectionObserver(
       entries => {
@@ -139,6 +148,7 @@ export function ScrollReveal() {
 
 export function MagneticButtons() {
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (window.matchMedia('(hover: none), (pointer: coarse)').matches) return;
 
     const buttons = Array.from(document.querySelectorAll<HTMLElement>('.magnetic'));
@@ -167,174 +177,6 @@ export function MagneticButtons() {
   return null;
 }
 
-export function KonamiEasterEgg() {
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const sequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-    let index = 0;
-    let timer: ReturnType<typeof setTimeout>;
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement | null;
-      if (target?.closest('input, textarea, [contenteditable="true"]')) return;
-
-      const key = event.key.length === 1 ? event.key.toLowerCase() : event.key;
-      index = key === sequence[index] ? index + 1 : key === sequence[0] ? 1 : 0;
-
-      if (index === sequence.length) {
-        index = 0;
-        setVisible(true);
-        clearTimeout(timer);
-        timer = setTimeout(() => setVisible(false), 1800);
-      }
-    };
-
-    window.addEventListener('keydown', onKeyDown);
-    return () => {
-      window.removeEventListener('keydown', onKeyDown);
-      clearTimeout(timer);
-    };
-  }, []);
-
-  if (!visible) return null;
-
-  return (
-    <div className="konami-overlay" aria-live="polite">
-      <div className="konami-card">
-        <div className="konami-title">Neural boost unlocked</div>
-        <div className="konami-sub">Hidden layer activated</div>
-        <div className="konami-sequence">UP UP DOWN DOWN</div>
-      </div>
-    </div>
-  );
-}
-
-const layers = [
-  [
-    { id: 'i1', x: 80, y: 95 },
-    { id: 'i2', x: 80, y: 170 },
-    { id: 'i3', x: 80, y: 245 },
-  ],
-  [
-    { id: 'h1', x: 260, y: 70 },
-    { id: 'h2', x: 260, y: 135 },
-    { id: 'h3', x: 260, y: 200 },
-    { id: 'h4', x: 260, y: 265 },
-  ],
-  [
-    { id: 'o1', x: 440, y: 130 },
-    { id: 'o2', x: 440, y: 220 },
-  ],
-];
-
-export function NeuralNetworkGame() {
-  const [epoch, setEpoch] = useState(0);
-  const [accuracy, setAccuracy] = useState(42);
-  const [loss, setLoss] = useState(0.92);
-  const [activeLayer, setActiveLayer] = useState(0);
-  const [training, setTraining] = useState(false);
-
-  const train = () => {
-    if (training) return;
-    setTraining(true);
-    setActiveLayer(0);
-
-    let step = 0;
-    const interval = window.setInterval(() => {
-      step += 1;
-      setActiveLayer(step % layers.length);
-      setEpoch(prev => prev + 1);
-      setAccuracy(prev => Math.min(98, prev + 4 + (step % 2)));
-      setLoss(prev => Math.max(0.08, Number((prev * 0.82).toFixed(2))));
-
-      if (step >= 6) {
-        window.clearInterval(interval);
-        setTraining(false);
-        setActiveLayer(2);
-      }
-    }, 320);
-  };
-
-  const activateNeuron = (layerIndex: number) => {
-    setActiveLayer(layerIndex);
-    setAccuracy(prev => Math.min(98, prev + 1));
-  };
-
-  const connections = layers.flatMap((layer, layerIndex) => {
-    const nextLayer = layers[layerIndex + 1];
-    if (!nextLayer) return [];
-    return layer.flatMap(from =>
-      nextLayer.map(to => ({
-        id: `${from.id}-${to.id}`,
-        from,
-        to,
-        active: activeLayer === layerIndex || activeLayer === layerIndex + 1,
-      })),
-    );
-  });
-
-  return (
-    <section id="neural-game" className="neural-shell">
-      <div className="section-label">07 - Neural game</div>
-      <div className="section-title">Train a <em>tiny</em> neural network<span className="dot">.</span></div>
-      <div className="neural-canvas">
-        <svg className="neural-svg" viewBox="0 0 520 320" role="img" aria-label="Interactive neural network">
-          {connections.map(connection => (
-            <line
-              key={connection.id}
-              className={`connection ${connection.active ? 'active' : ''}`}
-              x1={connection.from.x}
-              y1={connection.from.y}
-              x2={connection.to.x}
-              y2={connection.to.y}
-            />
-          ))}
-          {layers.map((layer, layerIndex) =>
-            layer.map(neuron => (
-              <circle
-                key={neuron.id}
-                className={`neuron ${activeLayer === layerIndex ? 'active' : ''}`}
-                cx={neuron.x}
-                cy={neuron.y}
-                r={18}
-                onClick={() => activateNeuron(layerIndex)}
-              />
-            )),
-          )}
-          {layers.map((layer, layerIndex) => (
-            <text key={layerIndex} className="layer-label" x={layer[0].x - 28} y={300}>
-              {layerIndex === 0 ? 'input' : layerIndex === 1 ? 'hidden' : 'output'}
-            </text>
-          ))}
-        </svg>
-        <div className="neural-controls">
-          <div className="neural-stats">
-            <div className="neural-stat">
-              <strong>{epoch}</strong>
-              epoch
-            </div>
-            <div className="neural-stat">
-              <strong>{accuracy}%</strong>
-              accuracy
-            </div>
-            <div className="neural-stat">
-              <strong>{loss.toFixed(2)}</strong>
-              loss
-            </div>
-          </div>
-          <button type="button" className="neural-btn magnetic" onClick={train} disabled={training}>
-            {training ? 'Training' : 'Train'}
-          </button>
-        </div>
-        <div className="neural-output">
-          <strong>Status:</strong> {training ? 'Signals are propagating through the hidden layer.' : 'Click neurons or train the model to update the network.'}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 type CounterItem = {
   value: number;
   suffix?: string;
@@ -342,10 +184,10 @@ type CounterItem = {
 };
 
 const counters: CounterItem[] = [
-  { value: 12, suffix: '+', label: 'awards' },
-  { value: 9, suffix: '+', label: 'projects shipped' },
-  { value: 4, suffix: ' mo', label: 'industry internship' },
-  { value: 100, suffix: '+', label: 'products crawled' },
+  { value: portfolioStats.awardsListed, suffix: '', label: 'listed awards & certs' },
+  { value: portfolioStats.projects, suffix: '', label: 'featured projects' },
+  { value: portfolioStats.internshipMonths, suffix: ' mo', label: 'industry internship' },
+  { value: portfolioStats.productsCrawledMin, suffix: '+', label: 'products crawled (HustDerm)' },
 ];
 
 export function AchievementCounters() {
@@ -373,6 +215,11 @@ export function AchievementCounters() {
 
   useEffect(() => {
     if (!active) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setProgress(1);
+      return;
+    }
 
     let frame = 0;
     const totalFrames = 42;

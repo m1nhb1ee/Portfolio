@@ -34,7 +34,7 @@ const capabilities: Capability[] = [
       { name: 'LangGraph', level: 'advanced' },
       { name: 'FastAPI', level: 'advanced' },
       { name: 'PostgreSQL', level: 'advanced' },
-      { name: 'React.js', level: 'intermediate' },
+      { name: 'React', level: 'intermediate' },
       { name: 'Terraform', level: 'familiar' },
     ],
   },
@@ -51,6 +51,8 @@ const capabilities: Capability[] = [
       { name: 'AWS (EC2 · S3)', level: 'intermediate' },
       { name: 'GCP', level: 'advanced' },
       { name: 'Git', level: 'advanced' },
+      { name: 'DVC', level: 'advanced' },
+      { name: 'Docker', level: 'advanced' },
     ],
   },
   {
@@ -64,6 +66,8 @@ const capabilities: Capability[] = [
       { name: 'HTML', level: 'advanced' },
       { name: 'Canva', level: 'advanced' },
       { name: 'Photoshop', level: 'intermediate' },
+      { name: 'Premiere', level: 'intermediate' },
+      { name: 'Unity', level: 'intermediate' },
     ],
   },
 ];
@@ -108,13 +112,13 @@ function Icon({ name }: { name: Capability['icon'] }) {
 export function Skills() {
   return (
     <section id="skills" className="section-shell">
-      <div className="section-label">Capabilities · Skills Matrix · Nº 03</div>
+      <div className="section-label">Skills — capabilities matrix</div>
       <div className="section-title">
-        Skills, systems, and surfaces for <em>applied intelligence</em><span className="dot">.</span>
+        Skills, systems, and surfaces for <em>applied intelligence</em>
       </div>
       <p className="section-lede">
-        I blend research code with production engineering - picking the smallest stack
-        that still ships an honest, end-to-end system.
+        The smallest stack that still ships honestly end-to-end — same bar as the thesis above:
+        languages, frameworks, cloud, and design tools I actually use in shipped work.
       </p>
 
       <div className="capability-grid">
@@ -143,13 +147,6 @@ export function Skills() {
                 </li>
               ))}
             </ul>
-
-            <span className="capability-arrow" aria-hidden="true">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="7" y1="17" x2="17" y2="7" />
-                <polyline points="9 7 17 7 17 15" />
-              </svg>
-            </span>
           </article>
         ))}
       </div>

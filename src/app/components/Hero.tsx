@@ -1,19 +1,29 @@
 import { useEffect, useRef, useState } from 'react';
+import { heroPhrases, heroTickerText, portfolioStats } from '../content/voice';
 
-const phrases = [
-  'AI engineering student at HUST.',
-  'Backend · DL/CV · Cloud infrastructure.',
-  'Building end-to-end production systems.',
-  'From research to shipping.',
-];
+const phrases = [...heroPhrases];
+
+function prefersReducedMotion() {
+  return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 export function Hero() {
   const [text, setText] = useState('');
   const phraseIdx = useRef(0);
   const charIdx = useRef(0);
   const deleting = useRef(false);
+  const [staticMode, setStaticMode] = useState(false);
 
   useEffect(() => {
+    setStaticMode(prefersReducedMotion());
+  }, []);
+
+  useEffect(() => {
+    if (staticMode) {
+      setText(phrases[0] ?? '');
+      return;
+    }
+
     let timer: ReturnType<typeof setTimeout>;
     const tick = () => {
       const current = phrases[phraseIdx.current];
@@ -38,30 +48,34 @@ export function Hero() {
     };
     timer = setTimeout(tick, 400);
     return () => clearTimeout(timer);
-  }, []);
+  }, [staticMode]);
 
   const scrollToAbout = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('#about')?.scrollIntoView({ behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   };
+
+  const { awardsListed, projects, internshipMonths } = portfolioStats;
 
   return (
     <header id="home" className="hero">
       <div className="hero-issue">
-        <span>Vol. 01 · Issue Nº 08 · May 2026</span>
-        <span>21.0285° N · 105.8542° E · Hanoi / VN</span>
-        <span>Build a3f2c1 · Filed under AI · Backend · Vision</span>
+        <span>Vol. 01 · SoICT · HUST · May 2026</span>
+        <span>B.Sc. Information Technology · github.com/m1nhb1ee</span>
+        <span>Focus: AI systems · backend · vision · LLM product integration</span>
       </div>
 
       <div className="hero-main">
-        <div className="hero-eyebrow">Open portfolio studio · Nº 01</div>
+        <div className="hero-eyebrow">Portfolio · HUST AI engineering</div>
         <div className="hero-name" aria-label="Nguyen Trong Minh">
           <span>Nguyen</span>
           <span>Trong Minh</span>
         </div>
-        <h1>Designing <em>useful AI</em> with code, systems, and <em>taste</em><span className="dot">.</span></h1>
+        <h1>
+          Shipping <em>model-backed systems</em> with <em>clear ownership</em> of the stack
+        </h1>
         <div className="hero-tagline">
           <span>{text}</span>
-          <span className="cursor" />
+          {!staticMode && <span className="cursor" />}
         </div>
         <div className="hero-actions">
           <a href="#projects" className="hero-cta magnetic">View work</a>
@@ -70,22 +84,20 @@ export function Hero() {
       </div>
 
       <aside className="hero-side">
-        <div className="hero-side-label">Nguyen Trong Minh · AI Engineer</div>
+        <div className="hero-side-label">Nguyen Trong Minh · AI engineering @ HUST</div>
         <p>
-          AI engineering student at Hanoi University of Science and Technology
-          with hands-on experience in backend development, deep learning, and
-          cloud infrastructure. I build end-to-end production systems -
-          independently, end-to-end.
+          I work where research code meets deployable services: APIs, auth, storage, and the
+          constraints real users surface. This site is the map—projects are the receipts.
         </p>
         <div className="hero-metrics">
-          <div><strong>10</strong><span>awards</span></div>
-          <div><strong>06</strong><span>projects</span></div>
-          <div><strong>04</strong><span>systems</span></div>
+          <div><strong>{awardsListed}</strong><span>listed awards &amp; certs</span></div>
+          <div><strong>{String(projects).padStart(2, '0')}</strong><span>featured projects</span></div>
+          <div><strong>{internshipMonths}</strong><span>mo. industry (AVT)</span></div>
         </div>
       </aside>
 
       <div className="hero-plate">
-        <div className="plate-caption">FIG. 01 · MT-26 · PLATE Nº 08 · METHOD</div>
+        <div className="plate-caption">FIG. 01 · OWN · DATA · API · SHIP</div>
         <div className="plate-grid">
           <span>Define</span>
           <span>Design</span>
@@ -97,12 +109,8 @@ export function Hero() {
 
       <div className="field-ticker" aria-hidden="true">
         <div className="field-ticker-track">
-          <span>
-            Hanoi · Berlin · Tokyo · Singapore · San Francisco · HUST · AWS · PyTorch · Supabase · Django · Hanoi · Berlin · Tokyo · Singapore · San Francisco ·
-          </span>
-          <span>
-            Hanoi · Berlin · Tokyo · Singapore · San Francisco · HUST · AWS · PyTorch · Supabase · Django · Hanoi · Berlin · Tokyo · Singapore · San Francisco ·
-          </span>
+          <span>{heroTickerText}</span>
+          <span>{heroTickerText}</span>
         </div>
       </div>
 

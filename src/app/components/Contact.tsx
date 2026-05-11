@@ -7,9 +7,9 @@ const channels = [
 export function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <div className="section-label">VIII.Contact / Conversation · 008 / 008</div>
+      <div className="section-label">Contact — email &amp; profiles</div>
       <div className="section-title" style={{ marginInline: 'auto' }}>
-        Let’s build something <em>useful</em> and <em>visually intentional</em> together <span className="dot">.</span>
+        Open to <em>research collaborations</em>, <em>internships</em>, and small teams that need an engineer who ships
       </div>
       <div className="contact-links">
         {channels.map(channel => (

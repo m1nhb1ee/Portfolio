@@ -3,11 +3,13 @@ import { ThemeToggle } from './Interactive';
 import logo from '../../assets/logo.png';
 
 const menuItems = [
-  { name: 'Manifesto', href: '#about' },
-  { name: 'Systems 18', href: '#skills' },
-  { name: 'Field 01', href: '#experience' },
-  { name: 'Work 06', href: '#projects' },
-  { name: 'Archive', href: '#achievements' },
+  { name: 'About', href: '#about' },
+  { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Education', href: '#education' },
+  { name: 'Achievements', href: '#achievements' },
+  { name: 'Terminal', href: '#terminal' },
   { name: 'Contact', href: '#contact' },
 ];
 

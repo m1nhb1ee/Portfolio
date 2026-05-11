@@ -1,8 +1,8 @@
 export function Experience() {
   return (
     <section id="experience" className="section-shell">
-      <div className="section-label">III.Field Notes · Internship · 004 / 008</div>
-      <div className="section-title">From production UI to <em>LLM-powered</em> product surfaces<span className="dot">.</span></div>
+      <div className="section-label">Experience — internship &amp; delivery</div>
+      <div className="section-title">From production UI to <em>LLM-powered</em> product surfaces</div>
       <div className="timeline">
         <div className="timeline-item">
           <div className="timeline-header">

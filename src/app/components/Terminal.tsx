@@ -1,28 +1,29 @@
 import { useState } from 'react';
+import { portfolioStats, thesisLine } from '../content/voice';
 
 const responses: Record<string, string> = {
   skills:
-    '🔧 Python, PyTorch, Django/DRF, FastAPI, HuggingFace, OpenCV, AWS. Backend + DL/CV + cloud, full pipeline.',
+    'Python, PyTorch, Django/DRF, FastAPI, HuggingFace, OpenCV, AWS. Backend + DL/CV + cloud, full pipeline.',
   contact:
-    '📧 minhngtr.b1e@gmail.com · 📱 0969 062 173 · GitHub: @m1nhb1ee · LinkedIn: /in/minhb1e',
+    'minhngtr.b1e@gmail.com · 0969 062 173 · GitHub: @m1nhb1ee · LinkedIn: /in/minhb1e',
   projects:
-    '🚀 SARa (medical radiology + MedGemma), SnakeNet (custom detector), DeDe (Vietnamese NLP, Qwen2.5-4B + LoRA), Bunik (admissions advisor), HustDerm, Traffic Sign Recognition.',
+    'SARa (radiology training + MedGemma), SnakeNet (detector), DeDe (Vietnamese NLP + Qwen2.5-4B LoRA), Bunik (admissions), HustDerm, traffic-sign VGG16 work.',
   experience:
-    '💼 Frontend & AI Engineer Intern at AVT Software (4 months, 2025) - React.js + LLM API integration in production.',
+    'Frontend & AI Engineer Intern at AVT Software (4 months, 2025): React.js + LLM APIs in production.',
   education:
-    '🎓 B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted - Informatics, Top-2 entrance.',
+    'B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted — Informatics, top-2 national entrance.',
   coffee:
-    '☕ Vietnamese coffee - strong, sweet, phin-filtered. Same patience I apply to debugging.',
-  philosophy:
-    '💡 "The best model is the one that ships." Reliability over novelty. Infrastructure over algorithms. Clarity over cleverness.',
+    'Vietnamese coffee — phin, strong, slow. Same cadence I use when debugging and profiling.',
+  philosophy: thesisLine,
   help:
-    'Available commands: skills, experience, education, projects, contact, coffee, philosophy.',
+    'Commands: skills, experience, education, projects, contact, coffee, philosophy, stats.',
+  stats: `Listed awards & certs: ${portfolioStats.awardsListed}. Featured projects: ${portfolioStats.projects}. Internship: ${portfolioStats.internshipMonths} mo (AVT).`,
 };
 
 const fallback = [
-  "Hmm, that's not a command I know yet. Try 'help' for the full list.",
-  "Interesting question! I'm a simple terminal though - try 'help' to see what I know.",
-  "I wish I could answer that. My knowledge is limited to the commands listed under 'help'.",
+  "Unknown command — type 'help' for the list.",
+  "That input is not wired yet. Try 'help'.",
+  "I only answer the fixed commands — try 'help'.",
 ];
 
 export function Terminal() {
@@ -41,7 +42,7 @@ export function Terminal() {
 
   return (
     <div className="terminal-section" id="terminal">
-      <div className="section-label">07 - Try it</div>
+      <div className="section-label">Terminal — quick facts</div>
       <div className="section-title" style={{ marginBottom: 32 }}>
         Ask <em>Minh’s</em> terminal<span className="dot">.</span>
       </div>
@@ -54,10 +55,11 @@ export function Terminal() {
         </div>
         <div className="terminal-body">
           <div className="terminal-line">
-            <span className="prompt">❯ </span>Welcome. Type a question and hit Enter.
+            <span className="prompt">❯ </span>
+            Welcome. Type a command and press Enter. Same thesis as the rest of the site — try &quot;philosophy&quot;.
           </div>
           <div className="terminal-line" style={{ fontSize: 12, opacity: 0.5 }}>
-            Try: "skills", "contact", "projects", "coffee", "philosophy"
+            Try: skills, stats, projects, contact, philosophy, help
           </div>
           <div className="terminal-input-line">
             <span className="prompt">❯ </span>
@@ -67,7 +69,7 @@ export function Terminal() {
               value={value}
               onChange={e => setValue(e.target.value)}
               onKeyDown={onKeyDown}
-              placeholder="Type something..."
+              placeholder="Type a command..."
               autoComplete="off"
             />
           </div>
