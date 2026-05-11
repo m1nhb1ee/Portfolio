@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { heroPhrases, heroTickerText, portfolioStats } from '../content/voice';
 
+const heroImage = new URL('../../assets/hero.jpg', import.meta.url).href;
+
 const phrases = [...heroPhrases];
 
 function prefersReducedMotion() {
@@ -84,10 +86,13 @@ export function Hero() {
       </div>
 
       <aside className="hero-side">
-        <div className="hero-side-label">Nguyen Trong Minh · AI engineering @ HUST</div>
+        <div className="hero-image-frame">
+          <img src={heroImage} alt="Portrait of Nguyen Trong Minh" loading="lazy" />
+          <div className="hero-image-caption">Nguyen Trong Minh · AI engineering @ HUST</div>
+        </div>
         <p>
           I work where research code meets deployable services: APIs, auth, storage, and the
-          constraints real users surface. This site is the map—projects are the receipts.
+          constraints real users surface. This site is the map-projects are the receipts.
         </p>
         <div className="hero-metrics">
           <div><strong>{awardsListed}</strong><span>listed awards &amp; certs</span></div>

@@ -53,7 +53,7 @@ type Project = {
 
 const MAX_STACK_SHOTS = 6;
 
-/** Same fanned stack as SARa — slot per image count (center hero + satellites). */
+/** Same fanned stack as SARa - slot per image count (center hero + satellites). */
 function stackSlotsForCount(count: number): string[] {
   const n = Math.min(Math.max(count, 0), MAX_STACK_SHOTS);
   switch (n) {
@@ -90,7 +90,7 @@ const projects: Project[] = [
       context:
         'Students need deliberate practice on real-looking cases without exposing PHI; the UI had to feel like a file, not a generic chat.',
       constraint:
-        'Tight coupling between uploads, case metadata, and model context — failures in auth or storage would leak trust fast.',
+        'Tight coupling between uploads, case metadata, and model context - failures in auth or storage would leak trust fast.',
       decision:
         'Own the stack in Django, integrate Supabase for auth/storage, and keep the agent contract explicit (what goes to MedGemma vs what stays server-side).',
       outcome:
@@ -103,7 +103,7 @@ const projects: Project[] = [
     eyebrow: 'Companion System',
     title: 'SnakeNet',
     description:
-      'Custom snake detector from a clean PyTorch codebase — backbone, FPN, CBAM, ASPP, and multi-scale heads with CIoU + Focal and FP16 training. Built to understand every layer, not only the leaderboard.',
+      'Custom snake detector from a clean PyTorch codebase - backbone, FPN, CBAM, ASPP, and multi-scale heads with CIoU + Focal and FP16 training. Built to understand every layer, not only the leaderboard.',
     stack: ['PyTorch', 'CBAM', 'ASPP', 'FP16'],
     href: 'https://github.com/m1nhb1ee/snakenet',
     year: '2026',
@@ -139,7 +139,7 @@ const projects: Project[] = [
     eyebrow: 'Full-stack App',
     title: 'HustDerm',
     description:
-      'Desktop assistant that crawls skincare SKUs, stores them in MongoDB, and grounds LLM answers on live inventory. JavaFX client + Python services — shipping mattered more than a single slick model.',
+      'Desktop assistant that crawls skincare SKUs, stores them in MongoDB, and grounds LLM answers on live inventory. JavaFX client + Python services - shipping mattered more than a single slick model.',
     stack: ['Java', 'JavaFX', 'Python', 'MongoDB'],
     href: 'https://github.com/m1nhb1ee/navHustDerm',
     year: '2025',
@@ -350,12 +350,12 @@ export function Projects() {
         {isCover ? (
           <div className="stage-cover">
             <div className="stage-cover-left">
-              <div className="stage-cover-eyebrow">— Projects · receipts for the thesis</div>
+              <div className="stage-cover-eyebrow">- Projects · receipts for the thesis</div>
               <h2 className="stage-cover-title">
                 Work that shows <em>ownership</em> from data to <em>deploy</em>
               </h2>
               <p className="stage-cover-sub">
-                {thesisLine} Six builds from 2025–2026 — each with stack, trade-offs, and source you can open.
+                {thesisLine} Six builds from 2025–2026 - each with stack, trade-offs, and source you can open.
               </p>
             </div>
             <div className="stage-cover-index" style={{ maxHeight: '620px', overflowY: 'auto' }}>
@@ -385,7 +385,7 @@ export function Projects() {
         ) : (
           <div className="stage-body">
             <div className="stage-headline">
-              <div className="stage-eyebrow">— {project!.eyebrow}</div>
+              <div className="stage-eyebrow">- {project!.eyebrow}</div>
               <h2 className="stage-title">{project!.title}</h2>
               <p className="stage-desc">{project!.description}</p>
 

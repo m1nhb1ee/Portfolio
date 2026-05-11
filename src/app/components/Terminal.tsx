@@ -11,9 +11,9 @@ const responses: Record<string, string> = {
   experience:
     'Frontend & AI Engineer Intern at AVT Software (4 months, 2025): React.js + LLM APIs in production.',
   education:
-    'B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted — Informatics, top-2 national entrance.',
+    'B.Sc. Information Technology, HUST (2023–2027). Ha Long High School for the Gifted - Informatics, top-2 national entrance.',
   coffee:
-    'Vietnamese coffee — phin, strong, slow. Same cadence I use when debugging and profiling.',
+    'Vietnamese coffee - phin, strong, slow. Same cadence I use when debugging and profiling.',
   philosophy: thesisLine,
   help:
     'Commands: skills, experience, education, projects, contact, coffee, philosophy, stats.',
@@ -21,9 +21,9 @@ const responses: Record<string, string> = {
 };
 
 const fallback = [
-  "Unknown command — type 'help' for the list.",
+  "Unknown command - type 'help' for the list.",
   "That input is not wired yet. Try 'help'.",
-  "I only answer the fixed commands — try 'help'.",
+  "I only answer the fixed commands - try 'help'.",
 ];
 
 export function Terminal() {
@@ -42,7 +42,7 @@ export function Terminal() {
 
   return (
     <div className="terminal-section" id="terminal">
-      <div className="section-label">Terminal — quick facts</div>
+      <div className="section-label">Terminal - quick facts</div>
       <div className="section-title" style={{ marginBottom: 32 }}>
         Ask <em>Minh’s</em> terminal<span className="dot">.</span>
       </div>
@@ -56,7 +56,7 @@ export function Terminal() {
         <div className="terminal-body">
           <div className="terminal-line">
             <span className="prompt">❯ </span>
-            Welcome. Type a command and press Enter. Same thesis as the rest of the site — try &quot;philosophy&quot;.
+            Welcome. Type a command and press Enter. Same thesis as the rest of the site - try &quot;philosophy&quot;.
           </div>
           <div className="terminal-line" style={{ fontSize: 12, opacity: 0.5 }}>
             Try: skills, stats, projects, contact, philosophy, help

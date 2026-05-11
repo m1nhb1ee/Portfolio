@@ -7,7 +7,7 @@ const channels = [
 export function Contact() {
   return (
     <section id="contact" className="contact-section">
-      <div className="section-label">Contact — email &amp; profiles</div>
+      <div className="section-label">Contact - email &amp; profiles</div>
       <div className="section-title" style={{ marginInline: 'auto' }}>
         Open to <em>research collaborations</em>, <em>internships</em>, and small teams that need an engineer who ships
       </div>

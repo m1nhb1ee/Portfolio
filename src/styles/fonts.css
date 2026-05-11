@@ -256,15 +256,35 @@ a { color: inherit; }
 }
 
 .hero-tagline .cursor {
+  z-index: 3;
   display: inline-block;
   width: 2px;
   height: 1em;
-  background: var(--accent);
-  margin-inline-start: 2px;
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
+  background: var(--fg);
+  margin-left: 8px;
+  border-radius: 2px;
+  animation: blink 1s steps(1, end) infinite;
 }
 
+.hero-image-frame::after {
+  /* very light ivory + paper noise overlay (SVG turbulence) */
+  content: '';
+  position: absolute;
+  /* match the inner image area (frame padding = 16px) */
+  inset: 16px;
+  pointer-events: none;
+  border-radius: 14px;
+  z-index: 1;
+  /* base ivory tint */
+  background-color: rgba(248, 225, 178, 0.5);
+  /* subtle repeating noise generated with SVG feTurbulence */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><filter id='n'><feTurbulence baseFrequency='0.95' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08' fill='white'/></svg>");
+  background-repeat: repeat;
+  background-size: 120px 120px;
+  mix-blend-mode: multiply;
+  /* slightly desaturate/sepia for aged paper look */
+  backdrop-filter: none;
+}
 @keyframes blink { 50% { opacity: 0; } }
 
 .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -311,6 +331,53 @@ a { color: inherit; }
   padding: 22px;
   border: 1px solid var(--border);
   background: var(--card);
+}
+
+.hero-image-frame {
+  position: relative;
+  width: min(100%, 360px);
+  margin: 0 auto 18px;
+  padding: 16px;
+}
+
+.hero-image-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--border), var(--border)) left top / 18px 1px no-repeat,
+    linear-gradient(var(--border), var(--border)) left top / 1px 18px no-repeat,
+    linear-gradient(var(--border), var(--border)) right top / 18px 1px no-repeat,
+    linear-gradient(var(--border), var(--border)) right top / 1px 18px no-repeat,
+    linear-gradient(var(--border), var(--border)) left bottom / 18px 1px no-repeat,
+    linear-gradient(var(--border), var(--border)) left bottom / 1px 18px no-repeat,
+    linear-gradient(var(--border), var(--border)) right bottom / 18px 1px no-repeat,
+    linear-gradient(var(--border), var(--border)) right bottom / 1px 18px no-repeat;
+  opacity: 0.9;
+  z-index: 3;
+}
+
+.hero-image-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image-caption {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 8px;
+  text-align: center;
 }
 
 .hero-side-label {
@@ -1116,7 +1183,7 @@ body { counter-reset: section-counter; }
 
 .stage-meta-row span:last-child { color: var(--stage-accent); }
 
-/* visual stage (right column) — fixed height */
+/* visual stage (right column) - fixed height */
 .stage-visual {
   position: relative;
   width: 100%;
@@ -1244,7 +1311,7 @@ body { counter-reset: section-counter; }
   outline-offset: 2px;
 }
 
-/* ── 1. STACK (SARa) — fanned cards via slot class ── */
+/* ── 1. STACK (SARa) - fanned cards via slot class ── */
 .viz-stack { perspective: 1200px; }
 .viz-stack .viz-stack-card {
   position: absolute;
@@ -1256,7 +1323,7 @@ body { counter-reset: section-counter; }
 .viz-stack .slot-tr { top: 2%;   right: 2%;   transform: rotate(7deg);  z-index: 2; }
 .viz-stack .slot-bl { bottom: 4%; left: 6%;   transform: rotate(-4deg); z-index: 3; }
 .viz-stack .slot-br { bottom: 2%; right: 4%;  transform: rotate(5deg);  z-index: 4; }
-/* Sixth satellite (e.g. Bunik) — top band behind center */
+/* Sixth satellite (e.g. Bunik) - top band behind center */
 .viz-stack .slot-tc {
   top: 1%;
   left: 50%;
