@@ -6,7 +6,6 @@ import { Skills } from './components/Skills';
 import { Experience } from './components/Experience';
 import { Education } from './components/Education';
 import { Achievements } from './components/Achievements';
-import { Terminal } from './components/Terminal';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import {
@@ -32,7 +31,6 @@ export default function App() {
         <Experience />
         <Education />
         <Achievements />
-        <Terminal />
         <Contact />
       </main>
       <Footer />

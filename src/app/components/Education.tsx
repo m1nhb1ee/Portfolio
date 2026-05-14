@@ -21,8 +21,8 @@ const education = [
 export function Education() {
   return (
     <section id="education" className="section-shell">
-      <div className="section-label">Education - schools &amp; programs</div>
-      <div className="section-title">Academic <em>Journey</em> and educational <em>development</em></div>
+      <div className="section-label">Education</div>
+      <div className="section-title">Academic <em>Journey</em> and educational <em>development</em> </div>
       <div className="education-list">
         {education.map((e, i) => (
           <div key={i} className="edu-card">

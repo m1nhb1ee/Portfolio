@@ -112,13 +112,12 @@ function Icon({ name }: { name: Capability['icon'] }) {
 export function Skills() {
   return (
     <section id="skills" className="section-shell">
-      <div className="section-label">Skills - capabilities matrix</div>
+      <div className="section-label">Skills</div>
       <div className="section-title">
         Skills, systems, and surfaces for <em>applied intelligence</em>
       </div>
       <p className="section-lede">
-        The smallest stack that still ships honestly end-to-end - same bar as the thesis above:
-        languages, frameworks, cloud, and design tools I actually use in shipped work.
+        Languages, frameworks, cloud, and design tools I actually use in shipped work.
       </p>
 
       <div className="capability-grid">

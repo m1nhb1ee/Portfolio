@@ -1,7 +1,7 @@
 export function Experience() {
   return (
     <section id="experience" className="section-shell">
-      <div className="section-label">Experience - internship &amp; delivery</div>
+      <div className="section-label">Experience</div>
       <div className="section-title">From production UI to <em>LLM-powered</em> product surfaces</div>
       <div className="timeline">
         <div className="timeline-item">

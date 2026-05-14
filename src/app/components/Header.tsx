@@ -9,7 +9,6 @@ const menuItems = [
   { name: 'Experience', href: '#experience' },
   { name: 'Education', href: '#education' },
   { name: 'Achievements', href: '#achievements' },
-  { name: 'Terminal', href: '#terminal' },
   { name: 'Contact', href: '#contact' },
 ];
 

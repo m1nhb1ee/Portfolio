@@ -1,7 +1,5 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 
-import { thesisLine } from '../content/voice';
-
 import sara1 from '../../assets/sara/Screenshot 2026-05-11 122605.png';
 import sara2 from '../../assets/sara/Screenshot 2026-05-11 122618.png';
 import sara3 from '../../assets/sara/Screenshot 2026-05-11 122630.png';
@@ -236,7 +234,8 @@ function ProjectVisual({
   const { title, year, category } = project;
   const visibleImages = orderedImages.slice(0, MAX_STACK_SHOTS);
   const slots = stackSlotsForCount(visibleImages.length);
-  const catalogLine = `FIG. ${String(catalogIssue).padStart(2, '0')} / ${title.toUpperCase()}`;
+
+  void catalogIssue;
 
   return (
     <div className={`viz viz-stack${visibleImages.length === 1 ? ' viz-stack-sparse' : ''}`}>
@@ -245,14 +244,12 @@ function ProjectVisual({
           key={`${src}-${i}`}
           src={src}
           alt={`${title} ${i + 1}`}
-          label={`SHOT ${String(i + 1).padStart(2, '0')}`}
+          label={`${String(i + 1).padStart(2, '0')}`}
           foot={`${year} · ${category}`}
           className={`viz-stack-card slot-${slots[i] ?? 'br'}`}
           onClick={i === 0 ? undefined : () => onSwap(i)}
         />
       ))}
-      <span className="viz-corner viz-corner-tl">{catalogLine}</span>
-      <span className="viz-corner viz-corner-br">{orderedImages.length} SHOT{orderedImages.length === 1 ? '' : 'S'}</span>
     </div>
   );
 }
@@ -331,31 +328,21 @@ export function Projects() {
     <section id="projects" className="section-shell projects-section">
       <div className="projects-stage" style={{ backgroundColor: '#191812' }}>
         <header className="stage-topbar">
-          <span className="stage-mark">m.</span>
-          <span className="stage-meta">
-            Selected work · HUST AI engineering <span className="stage-dot">•</span> Nguyen Trong Minh
-          </span>
+          <span className="stage-mark">Selected work</span>
           <span className="stage-page">
-            {isCover ? 'COVER' : `${String(page).padStart(3, '0')} / ${String(total - 1).padStart(3, '0')}`}
+            {isCover ? 'Index' : `${String(page).padStart(2, '0')} / ${String(total - 1).padStart(2, '0')}`}
           </span>
         </header>
-
-        <aside className="stage-rail">
-          <span>SHIP · MEASURE · OWN THE STACK</span>
-        </aside>
-        <aside className="stage-rail-right">
-          <span>HUST · SOICT · {isCover ? 'COVER' : `ISSUE ${String(page).padStart(2, '0')}`} · 2025–2026</span>
-        </aside>
 
         {isCover ? (
           <div className="stage-cover">
             <div className="stage-cover-left">
-              <div className="stage-cover-eyebrow">- Projects · receipts for the thesis</div>
+              <div className="stage-cover-eyebrow">Projects</div>
               <h2 className="stage-cover-title">
-                Work that shows <em>ownership</em> from data to <em>deploy</em>
+                Work that shows <em>ownership</em> from data to deploy
               </h2>
               <p className="stage-cover-sub">
-                {thesisLine} Six builds from 2025–2026 - each with stack, trade-offs, and source you can open.
+                Six builds from 2025–2026 — each with stack, trade-offs, and source you can open.
               </p>
             </div>
             <div className="stage-cover-index" style={{ maxHeight: '620px', overflowY: 'auto' }}>
@@ -385,7 +372,7 @@ export function Projects() {
         ) : (
           <div className="stage-body">
             <div className="stage-headline">
-              <div className="stage-eyebrow">- {project!.eyebrow}</div>
+              <div className="stage-eyebrow">{project!.eyebrow}</div>
               <h2 className="stage-title">{project!.title}</h2>
               <p className="stage-desc">{project!.description}</p>
 
